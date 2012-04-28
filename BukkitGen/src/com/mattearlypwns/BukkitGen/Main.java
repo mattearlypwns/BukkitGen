@@ -2,10 +2,6 @@ package com.mattearlypwns.BukkitGen;
 
 import java.util.logging.Logger;
 
-import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -24,7 +20,7 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
-		log("Diabled!");
+		log("Disabled!");
 	}
 
 	public void log(String message) {
@@ -38,26 +34,9 @@ public class Main extends JavaPlugin {
 			return new FlatLandsGenerator();
 
 		} else if (id.equalsIgnoreCase("rollinghills")) {
-			return null;
+			return new RollingHillsGenerator();
 		} else
 			return null;
-
-	}
-
-	public boolean onCommand(CommandSender sender, Command cmd, String label,
-			String[] args) {
-
-		if (cmd.getName().equalsIgnoreCase("gm")) {
-
-			if (sender instanceof Player) {
-				Player player = (Player) sender;
-				player.setGameMode(GameMode.CREATIVE);
-				return true;
-
-			}
-
-		}
-		return false;
 
 	}
 

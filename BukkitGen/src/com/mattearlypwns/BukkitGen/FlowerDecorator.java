@@ -15,17 +15,14 @@ public class FlowerDecorator extends BlockPopulator {
 		for (x = 0; x < 16; ++x) {
 			for (z = 0; z < 16; ++z) {
 
-				if ((x >= 0 && x < 8) && (z >= 0 && z < 8)) {
+				if (rand.nextInt(1000) < 10) {
 					for (y = 40; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
 					}
 
-					if (rand.nextInt(20) < 3)
-						chunk.getBlock(x, y, z).setType(getFlower(rand));
+					chunk.getBlock(x, y + 1, z).setType(getFlower(rand));
 				}
-
 			}
 		}
-
 	}
 
 	public Material getFlower(Random rand) {

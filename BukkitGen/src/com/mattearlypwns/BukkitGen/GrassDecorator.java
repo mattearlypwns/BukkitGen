@@ -11,16 +11,13 @@ import org.bukkit.generator.BlockPopulator;
 
 public class GrassDecorator extends BlockPopulator {
 
-	Biome biome;
 	Block block, beneathBlock;
-	int x, y, z;
 	private int height = FlatLandsGenerator.deafultChunkHeight;
-	boolean grass, deadGrass;
 
 	public void populate(World world, Random rand, Chunk chunk) {
-		grass = false;
-		deadGrass = false;
-		biome = chunk.getBlock(8, height, 8).getBiome();
+		int x, y, z;
+		boolean grass = false, deadGrass = false;
+		Biome biome = chunk.getBlock(8, height, 8).getBiome();
 
 		if (biome == Biome.FOREST || biome == Biome.FOREST_HILLS
 				|| biome == Biome.PLAINS || biome == Biome.TUNDRA
@@ -42,7 +39,7 @@ public class GrassDecorator extends BlockPopulator {
 
 			for (x = 0; x < 16; ++x) {
 				for (z = 0; z < 16; ++z) {
-					for (y = 20; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
+					for (y = 50; chunk.getBlock(x, y, z).getType() == Material.AIR; --y) {
 					}
 
 					block = chunk.getBlock(x, y + 1, z);
